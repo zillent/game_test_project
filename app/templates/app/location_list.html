@@ -1,0 +1,18 @@
+<a href="{% url 'main' %}">В начало</a>
+<h1>Локации</h1>
+<table border=1>
+    <tr>
+        <th>Наименование локации</th>
+    </tr>
+        
+    {% for location in object_list %}
+    <tr>
+    <td>{{ location.name }}</td>
+    <td><a href="{% url 'location-update' location.pk %}">Изменить</a></td>
+    <td><a href="{% url 'location-delete' location.pk %}">Удалить</a></td>
+    </tr>    
+{% empty %}
+    <li>Нет данных</li>
+{% endfor %}
+</table>
+<a href="{% url 'location-create' %}">Создать новую локацию</a>

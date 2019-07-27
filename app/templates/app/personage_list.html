@@ -1,0 +1,27 @@
+<a href="{% url 'main' %}">В начало</a>
+<h1>Персонажи</h1>
+<table border = 1>
+    <tr>
+        <th>Имя персонажа</th>
+        <th>Клан персонажа</th>
+        <th>Дата создания</th>
+        <th>Дата последнего посещения</th>
+        <th>Пароль</th>
+        <th>Количество убитых врагов</th>
+    </tr>
+    {% for personage in object_list %}
+    <tr>
+    <td>{{ personage.name }}</td>
+    <td>{{ personage.clan }}</td>
+    <td>{{ personage.create_dt }}</td>
+    <td>{{ personage.last_visit_dt }}</td>
+    <td>{{ personage.psw }}</td>
+    <td>{{ personage.enemy_killed_cnt }}</td>
+    <td><a href="{% url 'personage-update' personage.pk %}">Изменить</a></td>
+    <td><a href="{% url 'personage-delete' personage.pk %}">Удалить</a></td>
+    </tr>    
+{% empty %}
+    <li>Нет данных</li>
+{% endfor %}
+</table>
+<a href="{% url 'personage-create' %}">Создать новый персонаж</a>

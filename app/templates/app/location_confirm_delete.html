@@ -1,0 +1,8 @@
+<form method="post">{% csrf_token %}
+    <table>
+    {{ form.as_table }}
+</table>
+Вы уверены что хотите удалить локацию?<br>
+    <input type="submit" value="Да">
+    <input type="button" value="Нет" onclick="window.location.href='{% url 'locations' %}';">
+</form>
